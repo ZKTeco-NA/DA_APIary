@@ -2,7 +2,7 @@ FORMAT: 1A
 HOST: http://www.google.com
 
 # DA
-DA API is a *device adapter* service to control modules/translators used by DA.
+DA Module API is a *device adapter* service to control modules/translators used by DA.
 
 # Group Modules
 Modules/Transaltors related resources of the **DA Module API**
@@ -11,11 +11,21 @@ Modules/Transaltors related resources of the **DA Module API**
 ### Install a Module [POST]
 
 + Parameters
-    + module (required, text, `1`) ... Text `module` of the Note to perform action with. Has example value.
+    + module (required, text, `1`) ... Text `module` is the key to be given to the module. Has example value.
 
-+ Request (application/json)
++ Request (multipart/form-data; boundary=---BOUNDARY)
 
-        { "file": "translator file" }
+        -----BOUNDARY
+        Content-Disposition: form-data; name="translator[file]"; filename="transaltor.js"
+        Content-Type: text/javascript
+        Content-Transfer-Encoding: base64
+
+        /9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+        HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+        MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIA
+        AhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEB
+        AAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AL+AD//Z
+        -----BOUNDARY
 
 + Response 200 (text/plain)
 
