@@ -8,10 +8,11 @@ DA Module API is a *device adapter* service to control modules/translators used 
 Modules/Transaltors related resources of the **DA Module API**
 
 ## Module Installation [/modules/install/{module}]
+Install a module given a key and the module file.
 ### Install a Module [POST]
 
 + Parameters
-    + module (required, text, `1`) ... Text `module` is the key to be given to the module. Has example value.
+    + module (required, text, `push2.0-att-1.2`) ... Text `module` is the key to be given to the module. Has example value.
 
 + Request (multipart/form-data; boundary=---BOUNDARY)
 
@@ -29,56 +30,72 @@ Modules/Transaltors related resources of the **DA Module API**
 
 + Response 200 (text/plain)
 
+    + Body
+
+            "received upload."
+            
++ Response 400 (text/plain)
+
+    + Body
+
+            "Can't be installed."
+
 ## Uninstall Module [/modules/uninstall/{module}]
 Uninstall a single module given its key.
 
 + Parameters
-    + module (required, text, `1`) ... Text `module` of the Note to perform action with. Has example value.
+    + module (required, text, `push2.0-att-1.2`) ... Text `module` is the key to be given to the module. Has example value.
 
 ### Uninstall a Module [GET]
-+ Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: The Value
++ Response 200 (text/plain)
 
     + Body
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
+            "module uninstalled successfully."
+
++ Response 400 (text/plain)
+
+    + Body
+
+            "Can't be uninstalled."
 
 
 ## Enable Module [/modules/enable/{module}/{pushVersion_deviceType}]
 Enable a single module given its key and push version concatenated with device type.
 
 + Parameters
-    + module (required, text, `1`) ... Text `module` of the Note to perform action with. Has example value.
-    + pushVersion_deviceType (required, text, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+    + module (required, text, `push2.0-att-1.2`) ... Text `module` is the key to be given to the module. Has example value.
+    + pushVersion_deviceType (required, text, `push2.0 _ att`) ... Text `pushVersion _ deviceType` of the module to link it with protocol. Has example value.
 
 ### Enable a Module [GET]
-+ Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: The Value
++ Response 200 (text/plain)
 
     + Body
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
+            "module with key: 'module' is running."
+            
++ Response 400 (text/plain)
+
+    + Body
+
+            "Cannot enable module."
 
 ## Disable Module [/modules/disable/{module}]
 Disable a single module given its key.
 
 + Parameters
-    + module (required, text, `1`) ... Text `module` of the Note to perform action with. Has example value.
+    + module (required, text, `push2.0-att-1.2`) ... Text `module` is the key to be given to the module. Has example value.
 
 ### Disable a Module [GET]
-+ Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: The Value
++ Response 200 (text/plain)
 
     + Body
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
+            "module with key: 'module' is disconnected."
+            
++ Response 400 (text/plain)
+
+    + Body
+
+            "module with key: 'module' cannot be stopped."
 
