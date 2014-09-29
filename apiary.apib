@@ -2,37 +2,30 @@ FORMAT: 1A
 HOST: http://www.google.com
 
 # DA
-Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+DA API is a *device adapter* service to control modules/translators used by DA.
 
-# Group Notes
-Notes related resources of the **Notes API**
+# Group Modules
+Modules/Transaltors related resources of the **DA Module API**
 
-## Notes Collection [/notes]
-### List all Notes [GET]
-+ Response 200 (application/json)
-
-        [{
-          "id": 1, "title": "Jogging in park"
-        }, {
-          "id": 2, "title": "Pick-up posters from post-office"
-        }]
-
-### Create a Note [POST]
-+ Request (application/json)
-
-        { "title": "Buy cheese and bread for breakfast." }
-
-+ Response 201 (application/json)
-
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
-
-## Note [/notes/{id}]
-A single Note object with all its details
+## Module Installation [/modules/install/{module}]
+### Install a Module [POST]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+    + module (required, text, `1`) ... Text `module` of the Note to perform action with. Has example value.
 
-### Retrieve a Note [GET]
++ Request (application/json)
+
+        { "file": "translator file" }
+
++ Response 200 (text/plain)
+
+## Uninstall Module [/modules/uninstall/{module}]
+Uninstall a single module given its key.
+
++ Parameters
+    + module (required, text, `1`) ... Text `module` of the Note to perform action with. Has example value.
+
+### Uninstall a Module [GET]
 + Response 200 (application/json)
 
     + Header
@@ -43,5 +36,39 @@ A single Note object with all its details
 
             { "id": 2, "title": "Pick-up posters from post-office" }
 
-### Remove a Note [DELETE]
-+ Response 204
+
+## Enable Module [/modules/enable/{module}/{pushVersion_deviceType}]
+Enable a single module given its key and push version concatenated with device type.
+
++ Parameters
+    + module (required, text, `1`) ... Text `module` of the Note to perform action with. Has example value.
+    + pushVersion_deviceType (required, text, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+
+### Enable a Module [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            { "id": 2, "title": "Pick-up posters from post-office" }
+
+## Disable Module [/modules/disable/{module}]
+Disable a single module given its key.
+
++ Parameters
+    + module (required, text, `1`) ... Text `module` of the Note to perform action with. Has example value.
+
+### Disable a Module [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            { "id": 2, "title": "Pick-up posters from post-office" }
+
