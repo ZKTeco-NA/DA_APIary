@@ -99,3 +99,25 @@ Disable a single module given its key.
 
             "module with key: 'module' cannot be stopped."
 
+# Group Configuration
+Setting configurations of the **DA Configuration API**
+## setting configurations [/conf/set]
+set (Change) some configuration given a JSON Object contains the new Configurations.
+### Change Configurations [POST]
++ Request
+
+        {
+            "rabbit": {
+                "server": "localhost"
+            },
+            "reddis": {
+                "port": "1131"
+            }
+        }
+        
++ Response 200
+
+        
++ Response 400
+
+        { "errorCode": "E1" }
