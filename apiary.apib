@@ -80,6 +80,21 @@ Enable a single module given its key and push version concatenated with device t
 
             "Cannot enable module."
 
+## Enabled Modules [/modules/enabled]
+get all keys for all enabled modules
+
++ Response 200 (text/plain)
+
+    + Body
+
+            "[{"key" : "Push2_3-att-1_7"}, {"key" : "Push2_2_4-att-1_2"}]"
+            
++ Response 200 (text/plain)
+
+    + Body
+
+            "[]"
+
 ## Disable Module [/modules/disable/{module}]
 Disable a single module given its key.
 
@@ -91,7 +106,7 @@ Disable a single module given its key.
 
     + Body
 
-            "module with key: 'module' is disconnected."
+            "module is disconnected"
             
 + Response 400 (text/plain)
 
